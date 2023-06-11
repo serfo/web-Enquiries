@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container text-center">
+    <h1>受密码保护的页面</h1>
+    <p>如果你不知道该页面是干嘛的，你最好离开</p>
+    {% if authenticated %}
+        <!-- 页面内容 -->
+        <h3>如果你知道密码欢迎你使用</h3>
+        <p>密码只有通过站长口述告诉你</p>
+
+    {% else %}
+        <!-- 密码验证表单 -->
+        <form action="/protected" method="POST">
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="输入密码" required>
+            </div>
+            <button type="submit" class="btn btn-primary">验证密码</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

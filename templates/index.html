@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container text-center">
+    <h1>在线查询信息</h1>
+    <form action="/search" method="POST">
+        <div class="form-row">
+            <div class="col-9">
+                <input type="text" class="form-control" name="query" placeholder="输入你要查询的号码或者名称" required>
+            </div>
+            <div class="col-3">
+                   <select class="form-control" name="option">
+                        <option value="qq2sj">QQ号查询手机</option>
+                        <option value="sj2qq">手机号查询QQ</option>
+                        <option value="lol2qq">LOL名字查询QQ</option>
+                        <option value="qq2lol">QQ查询LOL名字</option>
+                        <option value="wb2sj">微博ID查询手机号</option>
+                        <option value="sj2wb">手机号查询微博ID</option>
+                        <option value="qqlm">QQ老密查询</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg mt-3">查询</button>
+    </form>
+    <div class="mt-3">
+        {% if result %}
+        <h3>查询结果：</h3>
+        <p>{{ result }}</p>
+        {% else %}
+<!--        <h3>欢迎访问查询信息网站</h3>-->
+        <p>这是一个用于在线查询信息的网站。</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
